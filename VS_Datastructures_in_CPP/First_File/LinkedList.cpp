@@ -10,11 +10,11 @@ struct Node {
 
 struct Node {
 	int data;
-	struct Node* Next;
+	struct Node* Next=NULL;
 };
 typedef struct Node* NodePtr;
 
-NodePtr createNode(NodePtr);
+void createNode(NodePtr*);
 void insertData(NodePtr, char[]);
 void DisplayDataAsQueue(NodePtr, int);
 
@@ -22,7 +22,7 @@ void insertData(NodePtr nodePtr, char data[])
 {
 	if (nodePtr == NULL)
 	{
-		createNode(nodePtr);
+		createNode(&nodePtr);
 		nodePtr->data = (int)(*data);
 		nodePtr->Next = NULL;
 	}
@@ -41,14 +41,15 @@ void DisplayDataAsQueue(NodePtr nodePtr, int level=1)
 	}
 }
 
-NodePtr createNode(NodePtr node)
+void createNode(NodePtr* node)
 {
-	node = (NodePtr)malloc(1 * sizeof(struct Node));
-	if (node == NULL)
+	*node = (NodePtr)malloc(1 * sizeof(struct Node));
+	if (*node == NULL)
 	{
 		cout << "\n Memory Error , Exiting";
 		exit(1);
 	}
+
 }
 
 
@@ -56,7 +57,10 @@ int main()
 {
 	char enteredData[25] = {};
 	Node NodeLinkedList;
-	while (1)
+	int record;
+	cout << "Enter the number of records to be stored\n";
+	cin >> record;
+	for(int i=0;i<record;i++)
 	{
 		cout << "Entered Data is before " << enteredData;
 		cout << "Enter a Number to be stored or type end to exit \n";
@@ -77,6 +81,7 @@ int main()
 		}
 		
 	}
-	
+	cout << "The Entered list of Data are as follows\n";
+	DisplayDataAsQueue(&NodeLinkedList);
 	return 0;
 }
