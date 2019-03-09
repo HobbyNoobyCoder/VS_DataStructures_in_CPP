@@ -16,7 +16,7 @@ void deleteListData(struct Node* Head,int level=1);
 
 /*Main Function*/
 
-int main()
+/*int main()
 {
 	char rec_data='0';
 	std::cout << "Program started \n";
@@ -54,7 +54,7 @@ int main()
 	cout << "End of program\n";
 	return 0;
 }
-
+*/
 /* Function Definations*/
 
 void insertListData(struct Node** head, int data)
