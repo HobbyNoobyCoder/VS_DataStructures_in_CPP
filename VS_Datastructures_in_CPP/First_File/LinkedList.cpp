@@ -12,11 +12,17 @@ struct Node* createNode();
 
 int main()
 {
+	int rec_num;
 	std::cout << "Program started \n";
-	insertListData(&Head, 1);
-	insertListData(&Head, 2);
-	insertListData(&Head, 3);
-	insertListData(&Head, 4);
+	cout << "Enter the number of Datas to be Stored\n";
+	cin >> rec_num;
+	for (int i = 0,data; i < rec_num; i++)
+	{
+		cout << "Enter the record no " << i<<"\n";
+		cin >> data;
+		//data -= 48;
+		insertListData(&Head,((int)data));
+	}
 	cout << "Inserting of Data Done \n";
 
 	displayListData(Head);
@@ -55,11 +61,12 @@ void displayListData(struct Node* nodePtr, int level)
 {
 	if (nodePtr != NULL)
 	{
-		displayListData(nodePtr->next, level+1);
 		cout << "The element in Node " << level << " is " << nodePtr->nodeData<<"\n";
+		displayListData(nodePtr->next, level + 1);
 	}
 	else
 	{
-		cout << "\n Reached Null Node\n";
+		cout << " Reached Null Node\n";
+
 	}
 }
