@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClCompile Include="First_File.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Maybe_Main.cpp" />
+    <ClCompile Include="myStackClass_using_linked_List.cpp" />
     <ClCompile Include="StackUsingLinkedList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

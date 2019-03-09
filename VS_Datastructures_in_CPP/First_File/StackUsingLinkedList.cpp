@@ -4,7 +4,7 @@ using namespace std;
 #include"First_File.cpp"
 
  char instructionString[] = "Choose \n '1' to Push \n '2' to Pop \n '3' to Peek \n '4' to exit \n";
-int main()
+/*int main()
 {
 	myStack stack;
 	int option = 0;
@@ -42,4 +42,4 @@ int main()
 		}
 	}
 }
-
+*/
