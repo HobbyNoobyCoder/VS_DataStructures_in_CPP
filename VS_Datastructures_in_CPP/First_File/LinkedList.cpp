@@ -1,35 +1,61 @@
 #include "stdafx.h"
 #include<iostream>
 using namespace std;
+/*Node Struct Declaration*/
 struct Node {
 	int nodeData;
 	struct Node* next;
 };
 struct Node* Head = NULL;
+
+/*Function Prototypes*/
 void insertListData(struct Node**, int data);
 void displayListData(struct Node*,int level=1);
 struct Node* createNode();
+void deleteListData(struct Node* Head,int level=1);
+
+/*Main Function*/
 
 int main()
 {
-	int rec_num;
+	char rec_data='0';
 	std::cout << "Program started \n";
-	cout << "Enter the number of Datas to be Stored\n";
-	cin >> rec_num;
-	for (int i = 0,data; i < rec_num; i++)
+	while (rec_data != 'e')
 	{
-		cout << "Enter the record no " << i<<"\n";
-		cin >> data;
-		//data -= 48;
-		insertListData(&Head,((int)data));
+		cout << "Enter \n 'a' to add Data\n 'd' to display entered data \n 'e' to end program\n";
+		cin >> rec_data;
+
+		switch (rec_data)
+		{
+		case 'a':
+			int data;
+			cout << "Enter the Data \n";
+			cin >> data;
+			cin.clear();
+			insertListData(&Head, data);
+			cout << "Inserting of Data " <<data<< " Done \n";
+			break;
+
+		case 'd':
+			cout << "The Entered Data are as Follows: \n";
+			displayListData(Head);
+			break;
+		case 'e':
+			cout << "The entire list of entered Data are: \n";
+			displayListData(Head);
+			cout << "Deletion of list started" << endl;
+			deleteListData(Head);
+			break;
+		default:
+			cout << "Wrong option chosen, Please select the correct one" << endl;
+			break;
+		}
 	}
-	cout << "Inserting of Data Done \n";
-
-	displayListData(Head);
-
 	cout << "End of program\n";
 	return 0;
 }
+
+/* Function Definations*/
 
 void insertListData(struct Node** head, int data)
 {
@@ -61,12 +87,35 @@ void displayListData(struct Node* nodePtr, int level)
 {
 	if (nodePtr != NULL)
 	{
-		cout << "The element in Node " << level << " is " << nodePtr->nodeData<<"\n";
+		cout << "The element in Node " << level << " is " << nodePtr->nodeData << "\n";
 		displayListData(nodePtr->next, level + 1);
 	}
 	else
 	{
-		cout << " Reached Null Node\n";
+		if (level == 1)
+		{
+			cout << "List is Empty" << endl;
+		}
+		
+		else
+		{
+			cout << " Reached Null Node\n";
+		}
+	}
+}
 
+void deleteListData(struct Node* Head,int level)
+{
+	if (Head == NULL)
+	{ if(level==1)
+		cout << "The List is empty"<<endl;
+	else
+		cout << "Complete List Deleted"<<endl;
+	}
+	else
+	{
+		cout << "Deleted data " << level <<" "<< Head->nodeData<<endl;
+		deleteListData(Head->next, level + 1);
+		free(Head);
 	}
 }
